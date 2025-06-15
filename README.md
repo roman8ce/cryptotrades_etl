@@ -45,7 +45,7 @@ cryptocurrency_etl/
 
 1. Клонируйте репозиторий:
 ```bash
-git clone <repository-url>
+git clone https://github.com/roman8ce/cryptotrades_etl
 cd cryptocurrency_etl
 ```
 
