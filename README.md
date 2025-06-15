@@ -4,8 +4,7 @@
 
 ## Обзор архитектуры
 
-
-![pipline](https://github.com/user-attachments/assets/dfa30a67-c90e-4129-924f-c9a5eacf4b57)
+![pipline](https://github.com/user-attachments/assets/3f32bac6-86ed-4a6b-8609-da39cc1b12e9)
 
 - Сбор данных с криптовалютных бирж через WebSocket
 - Потоковая передача сообщений в реальном времени через Apache Kafka
