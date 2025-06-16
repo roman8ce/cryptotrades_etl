@@ -43,7 +43,7 @@ class SupersetAPI:
 
     def create_chart(self, dataset_id, chart_type, metric, name, time_grain):
         params = {
-            'granularity_sqla': 'timestamp',
+            'granularity_sqla': 'trade_time',
             'time_grain_sqla': time_grain,
             'time_range': 'No filter',
             'metrics': [{
@@ -55,6 +55,7 @@ class SupersetAPI:
             }],
             'viz_type': chart_type,
             'y_axis_format': '~g',
+            'groupby': ['symbol'],
         }
 
         response = requests.post(
@@ -83,6 +84,7 @@ class SupersetAPI:
             'time_range': 'No filter',
             'query_mode': 'raw',
             'all_columns': [
+                'symbol',
                 'timestamp',
                 'open',
                 'high',
