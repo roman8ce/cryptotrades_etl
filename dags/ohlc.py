@@ -1,9 +1,9 @@
 from airflow import DAG
 from airflow.providers.postgres.operators.postgres import PostgresOperator
-from datetime import datetime, timedelta
+from airflow.utils.dates import days_ago
 
 DEFAULT_ARGS = {
-    'start_date': datetime.now().replace(second=0, microsecond=0),
+    'start_date': days_ago(1),
     'owner': 'admin'
 }
 
@@ -29,7 +29,7 @@ with DAG('ohlc_aggregation',
                 (ARRAY_AGG(price ORDER BY trade_time DESC))[1] AS close,
                 SUM(quantity) AS volume
             FROM raw_trades
-            WHERE trade_time BETWEEN DATE_TRUNC('minute', NOW()) - interval '1 minute' AND DATE_TRUNC('minute', NOW())
+            WHERE trade_time BETWEEN DATE_TRUNC('minute', NOW()) - interval '10 minute' AND DATE_TRUNC('minute', NOW())
             GROUP BY DATE_TRUNC('minute', trade_time), symbol;
         """
     )
